@@ -20,7 +20,7 @@ const simpleMultiplicativeHash = (password) => {
     let hash = 0;
 
     for (let i = password.length - 1; i >= 0 ; i--) {
-        const pos = i;
+        const pos = password.length - i - 1;
         console.log(`The position in reverse order is: ${pos}`);
         const singleHashedPassword = password.charCodeAt(i);
 
@@ -35,3 +35,4 @@ const simpleMultiplicativeHash = (password) => {
 const passwordInput = 'abc'
 const hashedPassword = simpleMultiplicativeHash(passwordInput);
 console.log(`Hashed password for ${passwordInput} is: ${hashedPassword}`);
+
