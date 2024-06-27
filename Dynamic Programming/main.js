@@ -10,7 +10,7 @@ console.log('bo');
 //   return fib(n - 1) + fib(n - 2);
 // };
 
-// const fibMemo = [];
+const fibMemo = [];
 // let fibDP = 0;
 
 // const fibM = (n) => {
