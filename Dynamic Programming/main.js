@@ -1,32 +1,30 @@
-console.log('bo');
+//console.log('bo');
 
-// let fibNDP = 0;
-// const fib = (n) => {
-//   if (n <= 1) {
-//     return n;
-//   }
-//   fibNDP++;
-//   console.log(`fib of: ${n}`);
-//   return fib(n - 1) + fib(n - 2);
-// };
+//let fib = 0;
+const fib = (n) => {
+  if (n <= 1) return n;
+
+  //console.log(`fib of: ${n}`);
+  return fib(n - 1) + fib(n - 2);
+};
+
+//console.log(fib(10));
 
 const fibMemo = [];
-// let fibDP = 0;
+let fibDP = 0;
 
-// const fibM = (n) => {
-//   if (n <= 1) {
-//     return n;
-//   }
+const fibM = (n) => {
+  if (n <= 1) return n;
+  if (fibMemo[n]) return fibMemo[n];
 
-//   if (fibMemo[n]) {
-//     return fibMemo[n];
-//   }
 
-//   fibDP++;
-//   console.log(`fib of: ${n}`);
-//   fibMemo[n] = fibM(n - 1) + fibM(n - 2);
-//   return fibMemo[n];
-// };
+  fibDP++;
+  console.log(`fib of: ${n}`);
+  fibMemo[n] = fibM(n - 1) + fibM(n - 2);
+  return fibMemo[n];
+};
+
+console.log(fibM(8));
 
 let fibTSteps = 0;
 const fibTabulation = (n) => {
