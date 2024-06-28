@@ -35,7 +35,7 @@ const longestCommonSubsequenceString = (str1, str2) => {
             if (str1[i - 1] === str2[j - 1]) {
                 dp[i][j] = dp[i - 1][j - 1] + str1[i - 1];
                 console.log(`I find a match at index ${i - 1} of str1 and ${j - 1} of str2 char = ${str1[i - 1]}`);
-                console.log(`Current String: ${dp[i][j]}`)
+                // console.log(`Current: ${dp[i][j]}`)
             } else {
                 dp[i][j] = dp[i - 1][j].length > dp[i][j - 1].length ? dp[i - 1][j] : dp[i][j - 1];
             }

@@ -35,10 +35,8 @@ const sum2 = (n) => {
   return result[n];
 };
 
-const sum3 = (n) => {
-  let summary = [0, 1];
-
-  for (let i = 2; i <= n; i++) {
+const sum3 = (n, summary = [0]) => {
+  for (let i = 1; i <= n; i++) {
     summary[i] = i + summary[i - 1];
   }
 
