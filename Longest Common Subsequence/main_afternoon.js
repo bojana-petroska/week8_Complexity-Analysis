@@ -1,13 +1,8 @@
-// Task 2: Find and Display All Common Subsequences
-// Objective: Create a web application that takes two input strings from the user and
-// displays all common subsequences of a certain length.
-// Explanation:
-// 1. HTML: Create a form to input two strings, an input field for the desired
-// subsequence length, and a button to trigger the calculation.
-// 2. JavaScript: Write a function to find and display all common subsequences of
-// the given length.
 
-const allLongestCommonSubsequences = (str1, str2) => {
+// d. Use a recursive function or backtracking to find all subsequences of the desired length from the dp array.
+// e. Return the list of common subsequences of the given length.
+
+const longestCommonSubsequences = (str1, str2) => {
     const horizontal = str1.length;
     const vertical = str2.length;
 
@@ -23,16 +18,44 @@ const allLongestCommonSubsequences = (str1, str2) => {
         }
     }
     
-    console.log(commonCheckUp)
-    return commonCheckUp[horizontal][vertical];
+    //console.log(commonCheckUp);
+    return commonCheckUp;
+}
+
+// find all the common subsequences that have length => 3
+const allLongCommonSubsequences = (str1, str2, minLength) => {
+    const dp = longestCommonSubsequences(str1, str2);
+    const result = new Set();
+
+    const backtrack = (i, j, lcs) => {
+        if (lcs.length >= minLength) result.add(lcs);
+        if (i === 0 || j === 0) return;
+
+        if (str1[i - 1] === str2[j - 1]) {
+            backtrack(i - 1, j - 1, str1[i - 1] + lcs)
+        } else {
+            if (dp[i - 1][j].length >= dp[i][j - 1].length) {
+                backtrack(i - 1, j, lcs)
+            }
+            if (dp[i][j - 1].length >= dp[i - 1][j].length) {
+                backtrack(i, j - 1, lcs)
+            }
+        }
+    }
+
+    backtrack(str1.length, str2.length, '');
+    console.log(result);
+    return Array.from(result);
 }
 
 const calculateLCS = () => {
     const str1 = document.getElementById('str1').value;
     const str2 = document.getElementById('str2').value;
-    const result = allLongestCommonSubsequences(str1,str2);
+    const result = allLongCommonSubsequences(str1,str2, 3);
     document.getElementById('output').innerText = result;
 }
 
+//console.log(longestCommonSubsequences('hello', 'llowr'));
 
-console.log(allLongestCommonSubsequences('hello', 'llowr'))
+
+
